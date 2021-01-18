@@ -15,6 +15,9 @@ public class Monde {
 	    // Retourner l'instance du personnage
 	   }
 
+	/**
+	 * Cette méthode affiche les informations du monde 
+	 */
 	   public static void afficherInformations()
 	   {
 	       // TODO
