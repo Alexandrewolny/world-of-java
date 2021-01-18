@@ -1,17 +1,14 @@
 package main;
 
-public class Personnage extends Combattant {
+public class Personnage extends AbstractCombattant {
 	
-	//Fields
-	 int pointDeVie;
-	 int degat;
-	 String nom;
+	
 	
 	//Constructors
 	public Personnage() {
 	}
 	
-	public Personnage(int pointDeVie, int degat, String nom) {
+	public Personnage(String nom, int pointDeVie, int degat) {
 		super(nom,pointDeVie,degat);
 		
 	}

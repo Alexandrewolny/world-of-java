@@ -22,13 +22,13 @@ public class Monde {
 		System.out.println("Veuillez entrer votre PDV");
 		int pointDeVie = sc.nextInt();
 		
-		System.out.println("Veuillez entrer vos degats");
+		System.out.println("Veuillez entrer vos points de degats");
 		int degat = sc.nextInt();
 				
 		
 		
 	    // Creer un nouveau personnage en utilisant le constructeur avec tous ses params (dont le nom qui vient d'être choisi par l'utilisateur)
-		Personnage p = new Personnage(pointDeVie,degat,nom);
+		Personnage p = new Personnage(nom,pointDeVie,degat);
 		
 	    // Retourner l'instance du personnage
 		return p;
