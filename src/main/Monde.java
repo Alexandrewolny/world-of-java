@@ -88,7 +88,45 @@ public class Monde {
 	    */
        static String dnom = Monde.debutnom[new Random().nextInt(debutnom.length)];
        static String fnom = Monde.finNom[new Random().nextInt(debutnom.length)];
-}
+       
+       /**
+        * 
+        * @param personnage qui attaque le monstre
+        * @param monstre qui attaque le personnage
+        */
+       public static void Combat(AbstractCombattant personnage, Monstre monstre) {
+    	   boolean turn = true;
+    	   while(personnage.getPointDeVie() > 0 && monstre.getPointDeVie() > 0) {
+    		   if(turn) {
+    			   personnage.pointDeVie -= monstre.degat;
+    			   
+    		   }
+    		   else {
+    			   monstre.pointDeVie -= personnage.degat;
+    			 
+    		   }
+    	   turn = !turn;
+    		   
+    		   System.out.println("Nous avons " + personnage.pointDeVie + "points de vie , le monstre à lui encore  " + monstre.pointDeVie + " points de vie avant d'être vaincu");
+    		   
+    		   if (monstre.getPointDeVie() < 0) {
+    			   System.out.println("Le monstre est vaincu");
+    		   } 
+    		   
+    		   if (personnage.getPointDeVie() <0) {
+    			   System.out.println("Vous êtes vaincu");
+    		   }
+
+    		
+    			   
+    				 
+    			   }
+    				   
+    			   }
+    		   }
+    	   
+       
+
 
 		   
 	     
