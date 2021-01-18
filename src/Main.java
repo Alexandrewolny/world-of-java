@@ -6,16 +6,6 @@ public class Main {
 
 	}
 	
-	/**
-	* Créer un personnage avec touss ses attributs. 
-	* Demande a l'utilisateur d'entrer le nom du personnage.
-	* retour: une instance de la classe Personnage correctement instancié.
-	 * @return 
-	**/
-	public static void personnageFactory(){
-	    // Demander a l'utilisateur un nom de personnage
-	    // Creer un nouveau personnage en utilisant le constructeur avec tous ses params (dont le nom qui vient d'être choisi par l'utilisateur)
-	    // Retourner l'instance du personnage
-	}
+	
 
 }
