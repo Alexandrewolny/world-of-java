@@ -1,5 +1,7 @@
 package main;
+import java.util.Random;
 import java.util.Scanner;
+
 
 
 
@@ -45,27 +47,48 @@ public class Monde {
 	   }
 	   
 	   /**
-	    * Permet de generer un monstre 
+	    * Permet de generer un monstre avec un nom aléatoire
 	    * @return un monstre
 	    */
 	   public static Monstre MonstreFactory()
 	   {
 		
 		   // Creer un string pour le nom de votre monstre
-		   // Creer une instance Monstre avec sont constructeur complet
-	       // retourner le monstre
+		   Scanner sc = new Scanner(System.in);
 		   
-		   return null;
+		   //String nom = debutnom[new Random().next(debutnom.length)] + finNom[new Random().next(finNom.length)];
+		   
+		   String nom = dnom + fnom;
+		   System.out.println("Veuillez entrer les pdv du monstre");
+			int pointDeVie = sc.nextInt();
+			
+			System.out.println("Veuillez entrer les points de degats du monstre");
+			int degat = sc.nextInt();
+			
+		   // Creer une instance Monstre avec sont constructeur complet
+		   Monstre monstre = new Monstre(nom,pointDeVie,degat);
+		   // retourner le monstre
+		   return monstre;
 	   }
 		
+	
 	       
+	   /**
+	    * Permet de generer un nom aleatoire pour le monstre
+	    */
 	   public static String[] debutnom = new String[] {
-				   "chat","chien","chaton",  };
+				   " chat"," chien"," chaton",  };
 		   
 	   public static String[] finNom = new String[] {
-				   " mechant"," de feu"," de la mort"} ;
-	   }
+				   " mechant"," de feu"," de la mort" };
+	
 
+	   /**
+	    * Permet de generer le debut et la fin du nom du monstre
+	    */
+       static String dnom = Monde.debutnom[new Random().nextInt(debutnom.length)];
+       static String fnom = Monde.finNom[new Random().nextInt(debutnom.length)];
+}
 
 		   
 	     
