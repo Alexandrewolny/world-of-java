@@ -1,20 +1,19 @@
+package main;
 
-public class Personnage {
+public class Personnage extends Combattant {
 	
 	//Fields
-	private int pointDeVie;
-	private int degat;
-	private String nom;
+	 int pointDeVie;
+	 int degat;
+	 String nom;
 	
 	//Constructors
 	public Personnage() {
 	}
 	
 	public Personnage(int pointDeVie, int degat, String nom) {
-		super();
-		this.pointDeVie = pointDeVie;
-		this.degat = degat;
-		this.nom = nom;
+		super(nom,pointDeVie,degat);
+		
 	}
 
 	//Getters and Setters
