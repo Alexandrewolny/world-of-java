@@ -93,11 +93,13 @@ public class Monde {
     	   boolean turn = true;
     	   while(combattant1.getPointDeVie() > 0 && combattant2.getPointDeVie() > 0) {
     		   if(turn) {
-    			   combattant1.attaquer(combattant2);
+    			   System.out.println("vous infligez " + combattant1.getDegats() + " points de dégats");
+    			   combattant2.setPointDeVie(combattant2.getPointDeVie() - combattant1.getDegats());
     			   
     		   }
     		   else {
-    			  combattant2.attaquer(combattant1);
+    			   System.out.println("Le monstre vous inflige " + combattant2.getDegats() +" points de dégats");
+    			   combattant1.setPointDeVie(combattant1.getPointDeVie() - combattant2.getDegats());
     			 
     		   }
     	   turn = !turn;
@@ -105,11 +107,12 @@ public class Monde {
     		   System.out.println("Nous avons " + combattant1.getPointDeVie() + "points de vie , le monstre à lui encore  " + combattant2.getPointDeVie() +
     				   " points de vie avant d'être vaincu");
     		   
-    		   if (combattant2.getPointDeVie() < 0) {
+    		   
+    		   if (combattant2.getPointDeVie() <= 0) {
     			   System.out.println("Le monstre est vaincu ! Bien joué.");
     		   } 
     		   
-    		   if (combattant1.getPointDeVie() <0) {
+    		   if (combattant1.getPointDeVie() <= 0) {
     			   System.out.println("Vous êtes vaincu , noob.");
     		   }
 
@@ -119,6 +122,8 @@ public class Monde {
     			   }
     				   
     			   }
+       
+       	
     		   }
     	   
        
