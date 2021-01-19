@@ -7,6 +7,13 @@ import java.util.Scanner;
 
 public class Monde {
 	
+	  public static String[] debutnom = new String[] {
+			   " chat"," chien"," chaton",  };
+	   
+  public static String[] finNom = new String[] {
+			   " mechant"," de feu"," de la mort" };
+  
+	
 	/**
 	* Créer un personnage avec touss ses attributs. 
 	* Demande a l'utilisateur d'entrer le nom du personnage.
@@ -70,19 +77,7 @@ public class Monde {
 		   // retourner le monstre
 		   return monstre;
 	   }
-		
-	
-	       
-	   /**
-	    * Permet de generer un nom aleatoire pour le monstre
-	    */
-	   public static String[] debutnom = new String[] {
-				   " chat"," chien"," chaton",  };
-		   
-	   public static String[] finNom = new String[] {
-				   " mechant"," de feu"," de la mort" };
-	
-
+	   
 	   /**
 	    * Permet de generer le debut et la fin du nom du monstre
 	    */
@@ -90,31 +85,32 @@ public class Monde {
        static String fnom = Monde.finNom[new Random().nextInt(debutnom.length)];
        
        /**
-        * 
+        * Fonction qui permet de faire combattre le personnage contre un monstre 
         * @param personnage qui attaque le monstre
         * @param monstre qui attaque le personnage
         */
-       public static void Combat(AbstractCombattant personnage, Monstre monstre) {
+       public static void Combat(ICombattant combattant1, ICombattant combattant2) {
     	   boolean turn = true;
-    	   while(personnage.getPointDeVie() > 0 && monstre.getPointDeVie() > 0) {
+    	   while(combattant1.getPointDeVie() > 0 && combattant2.getPointDeVie() > 0) {
     		   if(turn) {
-    			   personnage.pointDeVie -= monstre.degat;
+    			   combattant1.attaquer(combattant2);
     			   
     		   }
     		   else {
-    			   monstre.pointDeVie -= personnage.degat;
+    			  combattant2.attaquer(combattant1);
     			 
     		   }
     	   turn = !turn;
     		   
-    		   System.out.println("Nous avons " + personnage.pointDeVie + "points de vie , le monstre à lui encore  " + monstre.pointDeVie + " points de vie avant d'être vaincu");
+    		   System.out.println("Nous avons " + combattant1.getPointDeVie() + "points de vie , le monstre à lui encore  " + combattant2.getPointDeVie() +
+    				   " points de vie avant d'être vaincu");
     		   
-    		   if (monstre.getPointDeVie() < 0) {
-    			   System.out.println("Le monstre est vaincu");
+    		   if (combattant2.getPointDeVie() < 0) {
+    			   System.out.println("Le monstre est vaincu ! Bien joué.");
     		   } 
     		   
-    		   if (personnage.getPointDeVie() <0) {
-    			   System.out.println("Vous êtes vaincu");
+    		   if (combattant1.getPointDeVie() <0) {
+    			   System.out.println("Vous êtes vaincu , noob.");
     		   }
 
     		
