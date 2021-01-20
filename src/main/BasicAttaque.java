@@ -1,86 +1,133 @@
 package main;
 
+import java.util.Random;
+
 public class BasicAttaque implements IAttaque {
 	
+	private String nom;
+	private String description;
 	public int degats;
+	private double chanceToucher;
 	
 	
-
-	@Override
-	public int LancerAttaque(ICombattant lanceur, ICombattant cible) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public BasicAttaque() {
+		
+	}
+	
+	
+	
+	public BasicAttaque(String nom, String description, int degats, double chanceToucher) {
+		super();
+		this.nom = nom;
+		this.description = description;
+		this.degats = degats;
+		this.chanceToucher = chanceToucher;
 	}
 
-	@Override
+
+	
+
 	public String getNom() {
-		// TODO Auto-generated method stub
-		return null;
+		return nom;
 	}
 
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public int getChanceToucher() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	@Override
 	public void setNom(String nom) {
-		// TODO Auto-generated method stub
-		
+		this.nom = nom;
 	}
 
-	@Override
-	public void setDescription(int description) {
-		// TODO Auto-generated method stub
-		
+
+
+	public String getDescription() {
+		return description;
 	}
 
-	@Override
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+	public int getDegats() {
+		return degats;
+	}
+
+
+
+	public void setDegats(int degats) {
+		this.degats = degats;
+	}
+
+
+
+	public double getChanceToucher() {
+		return chanceToucher;
+	}
+
+
+
 	public void setChanceToucher(double chanceToucher) {
-		// TODO Auto-generated method stub
-		
+		if(chanceToucher >= 0 && chanceToucher <= 100) {
+		this.chanceToucher = chanceToucher;
+	} else {
+		System.out.println("La chance de toucher doit être comprise entre 0 et 100");
 	}
+}
+
+
+
+
 	
-	/**
-	 * Cette methode permet de lancer une attaque basique.
-	 * @param degats
-	 * @param chanceToucher
-	 */
-	public void basicAttaque(int degats,double chanceToucher) {
-		
-		
-		if(chanceToucher > (int)Math.random() *100) {
-			System.out.println("Vous infligez " + degats);
-		}
-		
-		else {
-			System.out.println("Echec critique");
-		}
-	}
 
 	/**
-	 * Cette methode permets aux combattants de lancer une attaque
-	 * @param lanceur
-	 * @param cible
-	 * @return 
+	 * Cette methode genere un nombre aleatoire entre 0 et 100
+	 * Si ce nombre est inferieur à la chance de toucher, return degats 
+	 * sinon affiche une erreur et return 0
 	 */
-	public int lancerAttaque(ICombattant lanceur, ICombattant cible) {
+	public int lancerAttaque() {
 			
 		if((int)Math.random() *100 < this.getChanceToucher()) {
-			return lanceur.getDegats();
+			return getDegats();
 		}
 		else {
 			System.out.println("Echec");
-			return 0;
+			
 		}
-	} 
+		return 0;
+	}
+
+
+
+	
+
+
+	
+
+
+	/**
+	 * Cette methode genere un nombre aleatoire entre 0 et 100
+	 * Si ce nombre est inferieur à la chance de toucher, return degats 
+	 * sinon affiche une erreur et return 0
+	 */
+	//public int LancerAttaque(ICombattant lanceur, ICombattant cible) {
+		//Random random = new Random();
+		//double nbr = random.nextDouble() *100;
+		
+		//if (nbr < this.chanceToucher) {
+		//	return lanceur.getDegats();
+		//}
+	//	return 0;
+	//}
+
+
+
+	
+
+	
 		
 	}
 

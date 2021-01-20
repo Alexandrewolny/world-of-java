@@ -1,4 +1,6 @@
 package main;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,10 +9,10 @@ import java.util.Scanner;
 
 public class Monde {
 	
+	  static Scanner scanner = new Scanner(System.in);
 	  public static String[] debutnom = new String[] {
-			   " chat"," chien"," chaton",  };
-	   
-  public static String[] finNom = new String[] {
+			   " chat"," chien"," chaton",  }; 
+	  public static String[] finNom = new String[] {
 			   " mechant"," de feu"," de la mort" };
   
 	
@@ -114,14 +116,40 @@ public class Monde {
     		   
     		   if (combattant1.getPointDeVie() <= 0) {
     			   System.out.println("Vous êtes vaincu , noob.");
-    		   }
-
-    		
-    			   
-    				 
-    			   }
-    				   
-    			   }
+    		   }	 
+      }
+ }
+       
+       /**
+        * Cette methode creer et tetourne une basucAttaque
+        * @return
+        */
+       public static BasicAttaque basicAttaqueFactory() {
+       	System.out.println("Creation d'une attaque -------------");
+       	BasicAttaque a = new BasicAttaque("","Ceci est une attaque",10,50);
+       	a.setNom(scanner.next());
+       	return a;
+       }
+       
+       /**
+        * Cette methode creer et retourne une classe 
+        * @return
+        */
+       public static Classe classeFactory() {
+       	System.out.println("Creation d'une classe --------------");
+       	Classe c = new Classe();
+       	System.out.println("Nom;");
+       	c.setNom(scanner.next());
+       	
+       	//Creation d'une list d'attaque
+       	List<IAttaque> attaques = new ArrayList<>();
+       	attaques.add(basicAttaqueFactory());
+       	attaques.add(basicAttaqueFactory());
+       	
+       	c.setAttaques(attaques);
+       	
+       	return c;
+       }
        
        	
     		   }
