@@ -1,54 +1,50 @@
 package main;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Classe {
-	
-	public String nom;
-	
-	public List <IAttaque> attaques1 = new ArrayList<>();
-	
-	IAttaque attaque1;
-	IAttaque attaque2;
-	IAttaque attaque3; 
-	
-	public Classe() {
-		
-	}
-	
-	public Classe(String nom, List<IAttaque> attaque) {
-		super();
-		this.nom = nom;
-		this.attaques1 = attaque;
-	}
 
-	
-	
-	public String getNom() {
-		return nom;
-	}
+    private String nom;
+    private List<IAttaque> attaques;
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public Classe() {
+    }
 
-	public List<IAttaque> getAttaques() {
-		return attaques1;
-	}
+    public Classe(String nom, List<IAttaque> attaques) {
+        this.nom = nom;
+        this.attaques = attaques;
+    }
 
-	public void setAttaques(List<IAttaque> attaques) {
-		this.attaques1 = attaques;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	
-	
-	
-	/**
-	 * Recupere une attaque parmis les attaques de la classe
-	 */
-	public void getAttaque(IAttaque attaques) {
-		
-	}
-	
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public List<IAttaque> getAttaques() {
+        return attaques;
+    }
+
+    /**
+     * Getter qui renvoie une attaque de la liste des attaques choisie aleatoirement
+     * @return
+     */
+    public IAttaque getAttaque() {
+        Random random = new Random();
+        return this.attaques.get(random.nextInt(this.attaques.size()));
+    }
+
+    public void setAttaques(List<IAttaque> attaques) {
+        this.attaques = attaques;
+    }
+
+    @Override
+    public String toString() {
+        return "Classe{" +
+                "nom='" + nom + '\'' +
+                ", attaques=" + attaques +
+                '}';
+    }
 }

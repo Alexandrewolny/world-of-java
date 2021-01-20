@@ -1,6 +1,8 @@
 package main;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,6 +11,7 @@ import java.util.Scanner;
 
 public class Monde {
 	
+	private static Map<String, Classe> classes = initClasses();
 	  static Scanner scanner = new Scanner(System.in);
 	  public static String[] debutnom = new String[] {
 			   " chat"," chien"," chaton",  }; 
@@ -151,8 +154,68 @@ public class Monde {
        	return c;
        }
        
+       /**
+        * Cette méthode créer et retourne un dictionnaire de classes
+        * @return
+        */
+       public static Map<String, Classe> initClasses() {
+           Map<String, Classe> classes = new HashMap<>();
+           classes.put("Mage", new Classe("Mage", initAttaques()));
+           classes.put("Archer", new Classe("Archer", initAttaques()));
+           classes.put("Orc", new Classe("Orc", initAttaques()));
+           return classes;
+       }
+       
+       /**
+        * Cette méthode créer et retourne un dictionnaire d'attaques
+        * @return
+        */
+       public static List<IAttaque> initAttaques() {
+           List<IAttaque> attaques = new ArrayList<>();
+           attaques.add(new BasicAttaque("Attaque Légère", "description", 10, 90));
+           attaques.add(new BasicAttaque("Attaque Normale", "description", 20, 60));
+           attaques.add(new BasicAttaque("Attaque Lourde", "description", 30, 30));
+           return attaques;
+       }
+       
+       /**
+        * Cette méthode affiche toutes les classes disponibles
+        * et demande à l'utilisateur d'en choisir une
+        * @return
+        */
+       public static Classe choisirClasse() {
+           System.out.println("Voici les classes disponibles : ");
+           for (Map.Entry<String, Classe> classe : classes.entrySet()) {
+               System.out.println(" ** " + classe.getKey());
+           }
+
+           Classe c = null;
+
+           // Tant que la classe n'a pas été trouvée, demandez une classe à l'utilisateur
+           while (c == null) {
+               System.out.println("Quelle classe choisissez-vous ?");
+               c = getClasse(scanner.next());
+               // Si classe est toujours egale à null alors afficher erreur
+               if(c == null) {
+                   System.out.println("Cette classe n'existe pas, recommencez");
+               }
+           }
+           return c;
+       }
+
+       /**
+        * Cette méthode retourne la classe avec le nom : "nom"
+        * @param nom
+        * @return
+        */
+       public static Classe getClasse(String nom)
+       {
+           return classes.get(nom);
+       }
+
+       
        	
-    		   }
+}
     	   
        
 
