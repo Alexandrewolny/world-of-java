@@ -8,7 +8,8 @@ public class Run {
 		//Monstre monstre = Monde.MonstreFactory();
 		//System.out.println(monstre);
 		
-		Monde.Combat(Monde.personnageFactory(), Monde.MonstreFactory());
+		Personnage p = Monde.personnageFactory();
+        System.out.println(p);
 		
 	}
 	

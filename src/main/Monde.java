@@ -25,28 +25,34 @@ public class Monde {
 	* retour: une instance de la classe Personnage correctement instanci�.
 	 * @return 
 	**/
-	public static Personnage personnageFactory()
-	   {
-		Scanner sc = new Scanner(System.in);
-		
-		  // Demander a l'utilisateur un nom de personnage
-		System.out.println("Veuillez entrer votre nom");
-		String nom = sc.nextLine();
-		
-		System.out.println("Veuillez entrer votre PDV");
-		int pointDeVie = sc.nextInt();
-		
-		System.out.println("Veuillez entrer vos points de degats");
-		int degat = sc.nextInt();
-				
-		
-		
-	    // Creer un nouveau personnage en utilisant le constructeur avec tous ses params (dont le nom qui vient d'�tre choisi par l'utilisateur)
-		Personnage p = new Personnage(nom,pointDeVie,degat);
-		
-	    // Retourner l'instance du personnage
-		return p;
-	   }
+	  public static Personnage personnageFactory() {
+	        System.out.println("Création d'un personnage ---------");
+	        // Initialisation des attributs du personnage à vide
+	        String nom = "";
+	        int degats = 0;
+	        int pointDeVie = 0;
+	        Classe classe = new Classe();
+
+	        // Vérifie que le nom n'est pas égal à rien
+	        while(nom.equals("")) {
+	            System.out.println("Saisir un nom :");
+	            nom = scanner.next();
+	        }
+	        // Vérifie que les degats ne sont pas égaux à 0
+	        while(degats == 0) {
+	            System.out.println("Saisir les dégats :");
+	            degats = scanner.nextInt();
+	        }
+	        // Vérifie que les points de vie ne sont pas égaux à 0
+	        while(pointDeVie == 0) {
+	            System.out.println("Saisir les points de vie :");
+	            pointDeVie = scanner.nextInt();
+	        }
+	        // Demande à l'utisateur de choisir sa classe
+	        classe = choisirClasse();
+
+	        return new Personnage(nom, degats, pointDeVie, classe);
+	    }
 
 	/**
 	 * Cette m�thode affiche les informations du monde 
